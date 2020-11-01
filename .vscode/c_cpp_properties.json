@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "clang-x64",
+            "compilerArgs": [
+                "-fsanitize=signed-integer-overflow",
+                "-fsanitize=undefined",
+                "-ggdb3",
+                "-O0",
+                "-std=c11 ",
+                "-Wall",
+                "-Werror",
+                "-Wextra",
+                "-Wno-sign-compare",
+                "-Wno-unused-parameter",
+                "-Wno-unused-variable ",
+                "-Wshadow",
+                "-lcrypt",
+                "-lcs50",
+                "-lm"
+            ]
+        }
+    ],
+    "version": 4
+}

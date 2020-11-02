@@ -7,15 +7,17 @@
 // declare functions here
 string lower_string(string s);
 string cipher_create(string plain_text, string user_key);
+bool unique_characters(string s);
+bool string_isalpha(string s);
 
 // main
 int main(int argc, string argv[])
 {
-    string key = argv[1];
-    key = lower_string(key);
     if (argc == 2)
     {
-        if (strlen(key) == 26)
+        string key = argv[1];
+        key = lower_string(key);
+        if (strlen(key) == 26 && unique_characters(key) && string_isalpha(key))
         {
             string plain = get_string("plaintext:  ");
             printf("ciphertext:  ");
@@ -23,7 +25,7 @@ int main(int argc, string argv[])
         }
         else
         {
-            printf("Key must contain 26 characters.\n");
+            printf("Key must contain 26 individual alphabetical characters.\n");
             exit(1);
             return (1);
         }
@@ -39,6 +41,7 @@ int main(int argc, string argv[])
 }
 
 // define functions here
+// lower_string is a function to convert a string to all lower case
 string lower_string(string s)
 {
     for (int i = 0; s[i]; i++)
@@ -48,6 +51,7 @@ string lower_string(string s)
     return s;
 }
 
+// cipher_create is a function to create a ciphertext from a plain text and key input
 string cipher_create(string plain_text, string user_key)
 {
     string cipher_text = 0;
@@ -74,4 +78,33 @@ string cipher_create(string plain_text, string user_key)
     }
     printf("\n");
     return (0);
+}
+
+// unique_characters is a function to check a string for unique characters
+bool unique_characters(string s)
+{
+    for (int i = 0; i < (strlen(s) - 1); i++)
+    {
+        for (int j = i + 1; j < strlen(s); j++)
+        {
+            if (s[i] == s[j])
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// string_isaplpha is a function that checks whether a string contains only alphabetical characters
+bool string_isalpha(string s)
+{
+    for (int i = 0; i < strlen(s); i++)
+    {
+        if (!isalpha(s[i]))
+        {
+            return false;
+        }
+    }
+    return true;
 }

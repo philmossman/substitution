@@ -54,3 +54,6 @@ dkms.conf
 
 # Visual Studio Code Files
 .vscode
+
+# Code formatting
+.clang-format
